@@ -384,7 +384,7 @@ table.dt tbody tr:hover td{background:rgba(251,83,4,.04)}
       </div>
       <div class="controls">
         <select class="sel" id="daily-month" onchange="renderDaily()"></select>
-        <select class="sel" id="daily-day"   onchange="renderDayDetail()"><option value="">— Média do mês —</option></select>
+        <select class="sel" id="daily-day"   onchange="renderDayDetail()"><option value="">— Escolha o dia —</option></select>
       </div>
     </div>
     <div class="kpi-grid" id="daily-kpis"></div>
@@ -851,7 +851,7 @@ function renderDaily(){
   const myD=DB.diario.filter(r=>String(r.usuario).toLowerCase()===String(CU.usuario).toLowerCase()&&String(r.data).startsWith(mon));
   const sorted=[...myD].sort((a,b)=>String(a.data).localeCompare(String(b.data)));
   const daySel=document.getElementById('daily-day');
-  daySel.innerHTML='<option value="">— Média do mês —</option>';
+  daySel.innerHTML='<option value="">— Escolha o dia —</option>';
   sorted.forEach(r=>{const o=document.createElement('option');o.value=r.data;o.textContent=fmtDate(r.data);daySel.appendChild(o);});
   document.getElementById('daily-period').textContent=fmtMonth(mon);
   renderDayDetail();
